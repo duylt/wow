@@ -1,0 +1,12 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+>
+    <Deployment.Parts>
+    </Deployment.Parts>
+  <App>
+    <!--<Extensions>
+      <Protocol Name="fb847957041938797" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+      <Protocol Name="msft-d10756e4db9c44fa8934595d9bb22777" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+    </Extensions>-->
+  </App>
+</Deployment>

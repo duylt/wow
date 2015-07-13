@@ -1,0 +1,112 @@
+﻿@model WoW.Core.Challenge
+@{
+    ViewBag.Title = "Wake or Waste";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var isLastDate = true;
+    var lastDate = Model.StartTime.Value.AddDays((double)Model.Duration);
+    if (DateTime.Now.Date < lastDate.Date && DateTime.Now.Month <= lastDate.Month)
+    {
+        isLastDate = false;
+    }
+}
+@section AdditionalPageHead {
+
+    @Styles.Render("~/WOW/PostingCSS")
+    <style type="text/css">
+        .panel {
+            background-color: rgba(0, 0, 0, 0.13) !important;
+        }
+
+        .pricing-table .panel-heading .caption {
+             color: #7f7f7f;
+        }
+
+        .caption-message {
+            font-size: 20px;
+        }
+    </style>
+}
+@{
+    var settingTime = DateTime.Now.Date;
+    settingTime = settingTime.AddHours(Model.WakeUpTime.Value.Hours);
+    settingTime = settingTime.AddMinutes(Model.WakeUpTime.Value.Minutes);
+}
+<!--BEGIN PAGE WRAPPER-->
+
+<div class="content">
+    <div class="demo-form-component">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 centered">
+                @if (isLastDate)
+                {
+                    <div class="panel-title pan text-center">
+                        <div class="caption-message">You did it, You made it, Now ...</div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-body pan text-center">
+                            <div class="the-price">
+                                <a href="@Url.Action("CompleteChallenge", "Home")" role="button" class="btn btn-warning btn-xl page-scroll" style="  padding: 10px 60px;font-weight: bolder;font-size: 30px;   width: 100%;"> Complete </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                <div class="panel-title pan text-center">
+                    @if ((settingTime.AddHours(-1) <= DateTime.Now) && (settingTime.AddMinutes(10) >= DateTime.Now))
+                    {
+
+                        <div class="caption-message">Congratulation, you made it !</div>
+
+                    }
+                    else
+                    { <div class="caption-message">Opps you woke up late !</div>
+
+                    }
+
+                </div>
+
+                <div class="panel">
+                    <div class="panel-body pan text-center">
+                        <div class="the-price">
+                            <h1 style="  font-size: 98px;">
+                                @Model.WakeUpTime.Value.Hours.ToString("00") : @Model.WakeUpTime.Value.Minutes.ToString("00")
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="panel-footer pal">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-md-12 text-center">
+                                    @if ((settingTime.AddHours(-1) <= DateTime.Now) && (settingTime.AddMinutes(10) >= DateTime.Now))
+                                    {
+                                        <a href="@Url.Action("Wake","Home")" role="button" class="btn btn-success btn-xl page-scroll" style="  padding: 10px 60px;font-weight: bolder;font-size: 30px;   width: 100%;"> wake </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Wake","Home")" role="button" class="btn btn-primary btn-xl page-scroll" style="  padding: 10px 60px;font-weight: bolder;font-size: 30px;    width: 100%;"> waste </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                }
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/WOW/PostingJS")
+}
+<script>
+    jQuery(document).ready(function () {
+        form_validation.init();
+        form_picker.init();
+    });
+</script>

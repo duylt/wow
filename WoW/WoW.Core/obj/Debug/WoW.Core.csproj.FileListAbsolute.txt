@@ -1,0 +1,10 @@
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\WoW.Core.dll.config
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\WoW.Core.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\WoW.Core.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\EntityFramework.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\EntityFramework.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\obj\Debug\WoW.Core.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\obj\Debug\WoW.Core.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Core\obj\Debug\WoW.Core.csprojResolveAssemblyReference.cache

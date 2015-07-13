@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42dee4cb8e174fc3917135706a2316ce" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="WakeOrWasteModel.ChallegeDay" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="WakeOrWasteModel.Challenge" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="WakeOrWasteModel.Donation" Width="1.5" PointX="3.75" PointY="2.375" />
+        <EntityTypeShape EntityType="WakeOrWasteModel.Message" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="WakeOrWasteModel.Social" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="WakeOrWasteModel.User" Width="1.5" PointX="0.75" PointY="5.125" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__ChallegeD__Chall__37A5467C" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__ChallegeD__UserI__36B12243" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__Challenge__Donat__398D8EEE" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__Challenge__UserI__38996AB5" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__Message__Challen__3B75D760" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__Message__UserId__3A81B327" />
+        <AssociationConnector Association="WakeOrWasteModel.FK__Social__UserId__3C69FB99" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WakeOrWasteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChallegeDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChallengeId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Succeed" Type="bit" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="WakeUpTime" Type="time" Precision="7" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="DonationId" Type="int" />
+          <Property Name="DonationAmount" Type="int" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IconUrl" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ChallengeId" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientId " Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__ChallegeD__Chall__37A5467C">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+          <End Role="ChallegeDay" Type="Self.ChallegeDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChallegeDay">
+              <PropertyRef Name="ChallengeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChallegeD__UserI__36B12243">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ChallegeDay" Type="Self.ChallegeDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChallegeDay">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Donat__398D8EEE">
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="DonationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__UserI__38996AB5">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__Challen__3B75D760">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ChallengeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__UserId__3A81B327">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Social__UserId__3C69FB99">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Social" Type="Self.Social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WakeOrWasteModelStoreContainer">
+          <EntitySet Name="ChallegeDay" EntityType="Self.ChallegeDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge" EntityType="Self.Challenge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Social" EntityType="Self.Social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChallegeD__Chall__37A5467C" Association="Self.FK__ChallegeD__Chall__37A5467C">
+            <End Role="Challenge" EntitySet="Challenge" />
+            <End Role="ChallegeDay" EntitySet="ChallegeDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChallegeD__UserI__36B12243" Association="Self.FK__ChallegeD__UserI__36B12243">
+            <End Role="User" EntitySet="User" />
+            <End Role="ChallegeDay" EntitySet="ChallegeDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Donat__398D8EEE" Association="Self.FK__Challenge__Donat__398D8EEE">
+            <End Role="Donation" EntitySet="Donation" />
+            <End Role="Challenge" EntitySet="Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__UserI__38996AB5" Association="Self.FK__Challenge__UserI__38996AB5">
+            <End Role="User" EntitySet="User" />
+            <End Role="Challenge" EntitySet="Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__Challen__3B75D760" Association="Self.FK__Message__Challen__3B75D760">
+            <End Role="Challenge" EntitySet="Challenge" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__UserId__3A81B327" Association="Self.FK__Message__UserId__3A81B327">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Social__UserId__3C69FB99" Association="Self.FK__Social__UserId__3C69FB99">
+            <End Role="User" EntitySet="User" />
+            <End Role="Social" EntitySet="Social" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WakeOrWasteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WakeOrWasteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChallegeDays" EntityType="WakeOrWasteModel.ChallegeDay" />
+          <EntitySet Name="Challenges" EntityType="WakeOrWasteModel.Challenge" />
+          <EntitySet Name="Donations" EntityType="WakeOrWasteModel.Donation" />
+          <EntitySet Name="Messages" EntityType="WakeOrWasteModel.Message" />
+          <EntitySet Name="Socials" EntityType="WakeOrWasteModel.Social" />
+          <EntitySet Name="Users" EntityType="WakeOrWasteModel.User" />
+          <AssociationSet Name="FK__ChallegeD__Chall__37A5467C" Association="WakeOrWasteModel.FK__ChallegeD__Chall__37A5467C">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="ChallegeDay" EntitySet="ChallegeDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChallegeD__UserI__36B12243" Association="WakeOrWasteModel.FK__ChallegeD__UserI__36B12243">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChallegeDay" EntitySet="ChallegeDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Donat__398D8EEE" Association="WakeOrWasteModel.FK__Challenge__Donat__398D8EEE">
+            <End Role="Donation" EntitySet="Donations" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__UserI__38996AB5" Association="WakeOrWasteModel.FK__Challenge__UserI__38996AB5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__Challen__3B75D760" Association="WakeOrWasteModel.FK__Message__Challen__3B75D760">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__UserId__3A81B327" Association="WakeOrWasteModel.FK__Message__UserId__3A81B327">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Social__UserId__3C69FB99" Association="WakeOrWasteModel.FK__Social__UserId__3C69FB99">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Social" EntitySet="Socials" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChallegeDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChallengeId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Succeed" Type="Boolean" Nullable="false" />
+          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Challenge" Relationship="WakeOrWasteModel.FK__ChallegeD__Chall__37A5467C" FromRole="ChallegeDay" ToRole="Challenge" />
+          <NavigationProperty Name="User" Relationship="WakeOrWasteModel.FK__ChallegeD__UserI__36B12243" FromRole="ChallegeDay" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Challenge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="WakeUpTime" Type="Time" Precision="7" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="DonationId" Type="Int32" />
+          <Property Name="DonationAmount" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ChallegeDays" Relationship="WakeOrWasteModel.FK__ChallegeD__Chall__37A5467C" FromRole="Challenge" ToRole="ChallegeDay" />
+          <NavigationProperty Name="Donation" Relationship="WakeOrWasteModel.FK__Challenge__Donat__398D8EEE" FromRole="Challenge" ToRole="Donation" />
+          <NavigationProperty Name="User" Relationship="WakeOrWasteModel.FK__Challenge__UserI__38996AB5" FromRole="Challenge" ToRole="User" />
+          <NavigationProperty Name="Messages" Relationship="WakeOrWasteModel.FK__Message__Challen__3B75D760" FromRole="Challenge" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IconUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Challenges" Relationship="WakeOrWasteModel.FK__Challenge__Donat__398D8EEE" FromRole="Donation" ToRole="Challenge" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ChallengeId" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <NavigationProperty Name="Challenge" Relationship="WakeOrWasteModel.FK__Message__Challen__3B75D760" FromRole="Message" ToRole="Challenge" />
+          <NavigationProperty Name="User" Relationship="WakeOrWasteModel.FK__Message__UserId__3A81B327" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId_" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="WakeOrWasteModel.FK__Social__UserId__3C69FB99" FromRole="Social" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChallegeDays" Relationship="WakeOrWasteModel.FK__ChallegeD__UserI__36B12243" FromRole="User" ToRole="ChallegeDay" />
+          <NavigationProperty Name="Challenges" Relationship="WakeOrWasteModel.FK__Challenge__UserI__38996AB5" FromRole="User" ToRole="Challenge" />
+          <NavigationProperty Name="Messages" Relationship="WakeOrWasteModel.FK__Message__UserId__3A81B327" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="Socials" Relationship="WakeOrWasteModel.FK__Social__UserId__3C69FB99" FromRole="User" ToRole="Social" />
+        </EntityType>
+        <Association Name="FK__ChallegeD__Chall__37A5467C">
+          <End Type="WakeOrWasteModel.Challenge" Role="Challenge" Multiplicity="1" />
+          <End Type="WakeOrWasteModel.ChallegeDay" Role="ChallegeDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChallegeDay">
+              <PropertyRef Name="ChallengeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChallegeD__UserI__36B12243">
+          <End Type="WakeOrWasteModel.User" Role="User" Multiplicity="1" />
+          <End Type="WakeOrWasteModel.ChallegeDay" Role="ChallegeDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChallegeDay">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Donat__398D8EEE">
+          <End Type="WakeOrWasteModel.Donation" Role="Donation" Multiplicity="0..1" />
+          <End Type="WakeOrWasteModel.Challenge" Role="Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="DonationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__UserI__38996AB5">
+          <End Type="WakeOrWasteModel.User" Role="User" Multiplicity="1" />
+          <End Type="WakeOrWasteModel.Challenge" Role="Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__Challen__3B75D760">
+          <End Type="WakeOrWasteModel.Challenge" Role="Challenge" Multiplicity="0..1" />
+          <End Type="WakeOrWasteModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ChallengeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Message__UserId__3A81B327">
+          <End Type="WakeOrWasteModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WakeOrWasteModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Social__UserId__3C69FB99">
+          <End Type="WakeOrWasteModel.User" Role="User" Multiplicity="1" />
+          <End Type="WakeOrWasteModel.Social" Role="Social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Social">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WakeOrWasteModelStoreContainer" CdmEntityContainer="WakeOrWasteEntities">
+          <EntitySetMapping Name="ChallegeDays">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.ChallegeDay">
+              <MappingFragment StoreEntitySet="ChallegeDay">
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="Succeed" ColumnName="Succeed" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ChallengeId" ColumnName="ChallengeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenges">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.Challenge">
+              <MappingFragment StoreEntitySet="Challenge">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="DonationAmount" ColumnName="DonationAmount" />
+                <ScalarProperty Name="DonationId" ColumnName="DonationId" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="WakeUpTime" ColumnName="WakeUpTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ChallengeId" ColumnName="ChallengeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Socials">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.Social">
+              <MappingFragment StoreEntitySet="Social">
+                <ScalarProperty Name="ClientId_" ColumnName="ClientId " />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WakeOrWasteModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

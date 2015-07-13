@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8" />
+    <meta property="og:image" content="http://terrapinmudrun.com/wp-content/uploads/2015/02/jogg3.jpg" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="[Wow]Change you habit or waste your time">
+    <meta property="og:site_name" content="WakeOrWaste">
+    <title>@ViewBag.Title - AngleHack</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700" />
+    @Styles.Render("~/WOW/MasterCSS")
+    @RenderSection("AdditionalPageHead", required: false)
+    @Scripts.Render("~/WOW/MasterJS")
+    <script type="text/javascript">
+        var _fV4UI = true;
+        window.applicationBaseUrl = "@System.Web.VirtualPathUtility.ToAbsolute("~/")";
+        var url = "@System.Web.VirtualPathUtility.ToAbsolute("~/")";
+
+        @{
+            //var baseUrl = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+            string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+        }
+        var siteurl = "@baseUrl";
+
+    </script>
+</head>
+<body class="">
+    <div class="fluid">
+        @{
+            var user = (WoW.Core.User)Session["User"];
+            if (Request.IsAuthenticated && user != null)
+            {
+                
+                <div id="header" class="page-header-topbar">
+                    <nav id="topbar" role="navigation" class="navbar navbar-default container pln prn">
+                        <div class="container-fluid pln prn">
+                            <div id="topbar-menu" class="navbar-collapse pln prn">
+                                <ul class="nav navbar-nav logo-wrapper">
+                                   
+                                    <li class="pull-left"><a id="logo" href="@System.Web.VirtualPathUtility.ToAbsolute("~/")" class="pan"><img src="~/images/alarm-clock-xxl.png" style="height: 60px; width: auto">Wake Or Waste</a></li>
+                                </ul>
+                                <ul class="nav navbar-top-links navbar-right">
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">@user.Name
+                                            <img src="@user.ImageUrl" alt="" class="img-responsive img-circle">&nbsp;
+                                            &nbsp;<span class="caret"></span>
+                                        </a>
+                                    
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            }
+        }
+
+        <div id="wrapper">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,146 @@
+﻿@model WoW.Core.Challenge
+@{
+    ViewBag.Title = "Statistics Page";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var isFullyAccomplished = ViewBag.FullyAccomplished;
+    var totalDonationAmount = ViewBag.TotalDonationAmount;
+}
+@section featured {
+
+}
+@section AdditionalPageHead {
+
+    @Styles.Render("~/WOW/PostingCSS")
+
+
+    <style type="text/css">
+        .panel {
+            background-color: rgba(0, 0, 0, 0.63) !important;
+        }
+
+        .pricing-table .panel-heading .caption {
+            color: #7f7f7f;
+        }
+
+        .caption-message {
+            font-size: 20px;
+        }
+
+        .caption {
+            color: white;
+        }
+    </style>
+
+}
+
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper">
+
+    <!--BEGIN CONTENT-->
+    <div class="content">
+        <div class="demo-form-component">
+        
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            @if (isFullyAccomplished)
+                            {
+
+                                var user = (WoW.Core.User)Session["User"];
+                                <div class="panel-heading">
+                                    <div class="caption">Big congrats, @user.Name ! You have finished the 21-day challenge of waking up early,</div>
+                                    <div class="caption">Below is your accomplishment statistic <img style="width:60px" src="~/Images/Award -06.png" /></div>
+                                    <div class="caption" style="clear:both;  padding: 10px 0;">
+                                        @{
+                                var lstChallengeDays = Model.ChallegeDays.ToList();
+                                        }
+                                        @for (int i = 0; i < lstChallengeDays.Count; i++)
+                                        {
+                                            if (lstChallengeDays[i].Succeed)
+                                            {
+
+                                                <span class="badge badge-success badge-none-radius" style="margin-top:5px">@(i + 1)</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger badge-none-radius" style="margin-top:5px">@(i + 1)</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="caption" style="clear:both; ">
+                                        As the winner of this challenge, please select a gift following this
+                                        <a href="http://aws.amazon.com/" style="color: #0454d3; text-decoration: underline">link</a>
+                                    </div>
+                                    <div class="caption" style="clear:both;">
+                                        And we will send it to you later :)
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-footer pal">
+                                    <a href="javascript:void(0);" role="button" class="btn btn-success btn-xl page-scroll" style="  padding: 10px 60px;font-weight: bolder;font-size: 30px;   width: 100%;">   Share this achievement on Facebook</a>
+                                </div>
+                            }
+                            else
+                            {
+                                var user = (WoW.Core.User)Session["User"];
+                                <div class="panel-heading">
+                                    <div class="caption">Big congrats, @user.Name ! You have finished the 21-day challenge of waking up early,</div>
+                                    <div class="caption">Below is your accomplishment statistic <img style="width:60px" src="~/Images/Sad.png" /> </div>
+                                    
+                                    <div class="caption" style="clear:both;  padding: 10px 0;">
+                                        @{
+                                var lstChallengeDays = Model.ChallegeDays.ToList();
+                                        }
+                                        @for (int i = 0; i < lstChallengeDays.Count; i++)
+                                        {
+                                            if (lstChallengeDays[i].Succeed)
+                                            {
+
+                                                <span class="badge badge-success badge-none-radius" style="margin-top:5px">@(i + 1)</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger badge-none-radius" style="margin-top:5px">@(i + 1)</span>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="caption" style="clear:both; text-align:left ">
+                                        On the journey, you have donated in total <strong>  10 USD </strong> to the charity foundation <img width="20px" height="20px" src="@Model.Donation.IconUrl" /> @Model.Donation.Name. You have our appreciation!
+                                    </div>
+                                    <div class="caption" style="clear:both;">
+                                        You can start another challenge any time :)
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-footer pal">
+                                    <a href='@Url.Action("FinalizeChallenge", "Home")' role="button" class="btn btn-success btn-xl page-scroll" style="  padding: 10px 60px;font-weight: bolder;font-size: 30px;   width: 100%;">   Start New Challenge</a>
+                                </div>
+
+
+                            }
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END CONTENT-->
+
+</div>
+<!--END PAGE WRAPPER-->
+@section Scripts
+{
+    @Scripts.Render("~/WOW/PostingJS")
+}
+<script>
+    jQuery(document).ready(function () {
+        form_validation.init();
+        form_picker.init();
+    });
+</script>

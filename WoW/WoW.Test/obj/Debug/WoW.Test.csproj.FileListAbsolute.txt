@@ -1,0 +1,12 @@
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\WoW.Test.dll.config
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\WoW.Test.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\WoW.Test.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\EntityFramework.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\WoW.Core.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\WoW.Core.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\EntityFramework.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\obj\Debug\WoW.Test.csprojResolveAssemblyReference.cache
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\obj\Debug\WoW.Test.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Test\obj\Debug\WoW.Test.pdb

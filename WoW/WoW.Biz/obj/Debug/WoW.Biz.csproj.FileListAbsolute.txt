@@ -1,0 +1,11 @@
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\WoW.Biz.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\WoW.Biz.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\Facebook.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\WoW.Core.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\EntityFramework.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\WoW.Core.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\Facebook.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Debug\EntityFramework.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Debug\WoW.Biz.csprojResolveAssemblyReference.cache
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Debug\WoW.Biz.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Debug\WoW.Biz.pdb

@@ -1,0 +1,136 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{52B1992C-48B8-4E1E-915F-CF50591657AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{AF6018D6-FBA2-42B3-988F-689FB6725EFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoW.Web", "WoW.Web\WoW.Web.csproj", "{BD864B04-EAD2-4814-9420-C88FF23E7D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoW.Core", "WoW.Core\WoW.Core.csproj", "{760513EE-52DE-45F8-BD62-5478240A6E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoW.Biz", "WoW.Biz\WoW.Biz.csproj", "{CD622683-50EB-4E7C-BD0F-54BEB8171999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceBookWp8.1", "FaceBookWp8.1\FaceBookWp8.1.csproj", "{27DFE701-3BEF-42C6-8BAA-77FDE770134C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoW.Test", "WoW.Test\WoW.Test.csproj", "{B4E2B176-D861-4209-9561-408281C1196E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wow.MobileApp", "Wow.MobileApp\Wow.MobileApp.csproj", "{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pleiku.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WoW.Web\\WoW.Web.csproj
+		SccProjectTopLevelParentUniqueName1 = WoW.sln
+		SccProjectName1 = WoW.Web
+		SccLocalPath1 = WoW.Web
+		SccProjectUniqueName2 = FaceBookWp8.1\\FaceBookWp8.1.csproj
+		SccProjectTopLevelParentUniqueName2 = WoW.sln
+		SccProjectName2 = FaceBookWp8.1
+		SccLocalPath2 = FaceBookWp8.1
+		SccProjectUniqueName3 = WoW.Biz\\WoW.Biz.csproj
+		SccProjectName3 = WoW.Biz
+		SccLocalPath3 = WoW.Biz
+		SccProjectUniqueName4 = WoW.Core\\WoW.Core.csproj
+		SccProjectName4 = WoW.Core
+		SccLocalPath4 = WoW.Core
+		SccProjectUniqueName5 = WoW.Test\\WoW.Test.csproj
+		SccProjectName5 = WoW.Test
+		SccLocalPath5 = WoW.Test
+		SccProjectUniqueName6 = Wow.MobileApp\\Wow.MobileApp.csproj
+		SccProjectTopLevelParentUniqueName6 = WoW.sln
+		SccProjectName6 = Wow.MobileApp
+		SccLocalPath6 = Wow.MobileApp
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F}.Release|x86.ActiveCfg = Release|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Release|ARM.ActiveCfg = Release|Any CPU
+		{760513EE-52DE-45F8-BD62-5478240A6E05}.Release|x86.ActiveCfg = Release|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CD622683-50EB-4E7C-BD0F-54BEB8171999}.Release|x86.ActiveCfg = Release|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|ARM.Build.0 = Debug|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|x86.ActiveCfg = Debug|x86
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|x86.Build.0 = Debug|x86
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Debug|x86.Deploy.0 = Debug|x86
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|ARM.ActiveCfg = Release|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|ARM.Build.0 = Release|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|ARM.Deploy.0 = Release|ARM
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|x86.ActiveCfg = Release|x86
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|x86.Build.0 = Release|x86
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C}.Release|x86.Deploy.0 = Release|x86
+		{B4E2B176-D861-4209-9561-408281C1196E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B4E2B176-D861-4209-9561-408281C1196E}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|ARM.Build.0 = Debug|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|x86.ActiveCfg = Debug|x86
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|x86.Build.0 = Debug|x86
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Debug|x86.Deploy.0 = Debug|x86
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|ARM.ActiveCfg = Release|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|ARM.Build.0 = Release|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|ARM.Deploy.0 = Release|ARM
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|x86.ActiveCfg = Release|x86
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|x86.Build.0 = Release|x86
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD864B04-EAD2-4814-9420-C88FF23E7D1F} = {52B1992C-48B8-4E1E-915F-CF50591657AF}
+		{27DFE701-3BEF-42C6-8BAA-77FDE770134C} = {AF6018D6-FBA2-42B3-988F-689FB6725EFC}
+		{DE72F5A7-37EA-444B-80F6-88AE3EB6E6EB} = {AF6018D6-FBA2-42B3-988F-689FB6725EFC}
+	EndGlobalSection
+EndGlobal

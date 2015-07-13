@@ -1,0 +1,11 @@
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\WoW.Biz.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\WoW.Biz.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\Facebook.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\WoW.Core.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\EntityFramework.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\WoW.Core.pdb
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\Facebook.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\bin\Release\EntityFramework.xml
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Release\WoW.Biz.csprojResolveAssemblyReference.cache
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Release\WoW.Biz.dll
+C:\Users\ThanhDuy\documents\visual studio 2013\Projects\WoW\WoW.Biz\obj\Release\WoW.Biz.pdb

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0058)http://ironsummitmedia.github.io/startbootstrap-creative/# -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - AngleHack</title>
+   
+    <!-- Custom Fonts -->
+    @*<link href="~/Resources/Layout//css" rel="stylesheet" type="text/css">
+    <link href="~/Resources/Layout//css(1)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Resources/Layout//font-awesome.min.css" type="text/css">*@
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="~/Resources/Layout/animate.min.css" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Resources/Layout/creative.css" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700" />
+    @Styles.Render("~/WOW/MasterCSS")
+    @RenderSection("AdditionalPageHead", required: false)
+    @Scripts.Render("~/WOW/MasterJS")
+    <script type="text/javascript">
+        var _fV4UI = true;
+        window.applicationBaseUrl = "@System.Web.VirtualPathUtility.ToAbsolute("~/")";
+        var url = "@System.Web.VirtualPathUtility.ToAbsolute("~/")";
+
+        @{
+            //var baseUrl = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+            string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+        }
+        var siteurl = "@baseUrl";
+
+    </script>
+
+    <style>
+        .navbar-default {
+            background: none;
+        }
+
+        .panel-footer {
+            background: none;
+        }
+    </style>
+</head>
+<body id="page-top" cz-shortcut-listen="true">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand page-scroll" href="#" style="color:white">Wake Or Waste</a>
+            </div>
+            @{
+                var user = (WoW.Core.User)Session["User"];
+                if (Request.IsAuthenticated && user != null)
+                {
+                    <div style="" class="nav navbar-nav navbar-right">
+                        <p style="float:left;  margin-right: 10px;">@user.Name</p>
+                        <img src="@user.ImageUrl" width="30px" alt="" class="img-responsive img-circle">
+                    </div>
+                }
+            }
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+
+                @*<h1 style="font-size: 65px;">@RenderSection("PageTitle", false)</h1>
+                    <hr>
+                    @RenderBody()
+                    <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                    <a href="http://ironsummitmedia.github.io/startbootstrap-creative/#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>*@
+            </div>
+        </div>
+    </header>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

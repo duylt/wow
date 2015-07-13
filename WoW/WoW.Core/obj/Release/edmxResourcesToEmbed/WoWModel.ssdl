@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WakeOrWasteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChallegeDay">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChallengeId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Succeed" Type="bit" Nullable="false" />
+    <Property Name="IsProcessed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Challenge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="WakeUpTime" Type="time" Precision="7" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="DonationId" Type="int" />
+    <Property Name="DonationAmount" Type="int" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IconUrl" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ChallengeId" Type="int" />
+    <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="Social">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientId " Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImageUrl" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK__ChallegeD__Chall__37A5467C">
+    <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+    <End Role="ChallegeDay" Type="Self.ChallegeDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallegeDay">
+        <PropertyRef Name="ChallengeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChallegeD__UserI__36B12243">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ChallegeDay" Type="Self.ChallegeDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallegeDay">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Challenge__Donat__398D8EEE">
+    <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+    <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Challenge">
+        <PropertyRef Name="DonationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Challenge__UserI__38996AB5">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Challenge">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__Challen__3B75D760">
+    <End Role="Challenge" Type="Self.Challenge" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ChallengeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__UserId__3A81B327">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Social__UserId__3C69FB99">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Social" Type="Self.Social" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Social">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WakeOrWasteModelStoreContainer">
+    <EntitySet Name="ChallegeDay" EntityType="Self.ChallegeDay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Challenge" EntityType="Self.Challenge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Social" EntityType="Self.Social" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChallegeD__Chall__37A5467C" Association="Self.FK__ChallegeD__Chall__37A5467C">
+      <End Role="Challenge" EntitySet="Challenge" />
+      <End Role="ChallegeDay" EntitySet="ChallegeDay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChallegeD__UserI__36B12243" Association="Self.FK__ChallegeD__UserI__36B12243">
+      <End Role="User" EntitySet="User" />
+      <End Role="ChallegeDay" EntitySet="ChallegeDay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Challenge__Donat__398D8EEE" Association="Self.FK__Challenge__Donat__398D8EEE">
+      <End Role="Donation" EntitySet="Donation" />
+      <End Role="Challenge" EntitySet="Challenge" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Challenge__UserI__38996AB5" Association="Self.FK__Challenge__UserI__38996AB5">
+      <End Role="User" EntitySet="User" />
+      <End Role="Challenge" EntitySet="Challenge" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__Challen__3B75D760" Association="Self.FK__Message__Challen__3B75D760">
+      <End Role="Challenge" EntitySet="Challenge" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__UserId__3A81B327" Association="Self.FK__Message__UserId__3A81B327">
+      <End Role="User" EntitySet="User" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Social__UserId__3C69FB99" Association="Self.FK__Social__UserId__3C69FB99">
+      <End Role="User" EntitySet="User" />
+      <End Role="Social" EntitySet="Social" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

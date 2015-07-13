@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login | Pages</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+    <link type="text/css" rel="stylesheet" href="global/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="global/vendors/simple-line-icons/simple-line-icons.css">
+    <link type="text/css" rel="stylesheet" href="global/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="global/vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="global/css/core.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/system.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/xenon-components.css">
+</head>
+<body class="page-body login-page">
+
+    <div class="login-container">
+        <div class="row">
+            <div class="col-sm-6">
+                    <div class="errors-container"> </div> 
+                    <form method="post" role="form" id="login" class="login-form fade-in-effect in" novalidate="novalidate">
+                        <div class="login-header">
+                            <a href="" class="logo"> <span>Wake or Waste</span> </a>
+                            <p>Dear user, log in to access the admin area!</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="username">Username</label>
+                            <input type="text" class="form-control input-dark error" name="username" id="username" autocomplete="off" aria-required="true" aria-invalid="true">
+                            <label id="username-error" class="error" for="username">Please enter your username.</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="passwd">Password</label>
+                            <input type="password" class="form-control input-dark error" name="passwd" id="passwd" autocomplete="off" aria-required="true" aria-invalid="true">
+                            <label id="passwd-error" class="error" for="passwd">Please enter your password.</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark btn-block text-left">
+                                <i class="fa-lock"></i> Log In
+                            </button>
+                        </div>
+                        <div class="login-footer">
+                            <a href="#">Forgot your password?</a>
+                            <div class="info-links">
+                                <a href="#">ToS</a> -
+                                <a href="#">Privacy Policy</a>
+                            </div>
+                        </div>
+                    </form>    
+                    <div class="external-login">
+                        <a href="#" class="facebook">
+                            <i class="fa-facebook"></i>
+                            Facebook Login
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="global/js/jquery-1.10.2.min.js"></script>
+    <script src="global/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="global/js/jquery-ui.js"></script>
+    <script src="global/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="global/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="global/js/html5shiv.js"></script>
+    <script src="global/js/respond.min.js"></script>
+    <script src="global/vendors/iCheck/icheck.min.js"></script>
+    <script src="global/vendors/iCheck/custom.min.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="assets/vendors/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="assets/js/form-validation.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            // Reveal Login form
+            setTimeout(function () { $(".fade-in-effect").addClass('in'); }, 1);
+
+            // Validation and Ajax action
+            $("form#login").validate({
+                rules: {
+                    username: {
+                        required: true
+                    },
+                    passwd: {
+                        required: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: 'Please enter your username.'
+                    },
+                    passwd: {
+                        required: 'Please enter your password.'
+                    }
+                },
+                // Form Processing via AJAX
+                submitHandler: function (form) {
+                    show_loading_bar(70); // Fill progress bar to 70% (just a given value)
+                    var opts = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-full-width",
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    $.ajax({
+                        url: "http://themes.laborator.co/xenon/data/login-check.php",
+                        method: 'POST',
+                        dataType: 'json',
+                        data: {
+                            do_login: true,
+                            username: $(form).find('#username').val(),
+                            passwd: $(form).find('#passwd').val(),
+                        },
+                        success: function (resp) {
+                            show_loading_bar({
+                                delay: .5,
+                                pct: 100,
+                                finish: function () {
+                                    // Redirect after successful login page (when progress bar reaches 100%)
+                                    if (resp.accessGranted) {
+                                        window.location.href = 'http://themes.laborator.co/xenon';
+                                    }
+                                    else {
+                                        toastr.error("You have entered wrong password, please try again. User and password is <strong>demo/demo</strong> :)", "Invalid Login!", opts);
+                                        $(form).find('#passwd').select();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            // Set Form focus
+            $("form#login .form-group:has(.form-control):first .form-control").focus();
+
+            // Login Form Label Focusing
+            $(".login-form .form-group:has(label)").each(function (i, el) {
+                var $this = $(el),
+                    $label = $this.find('label'),
+                    $input = $this.find('.form-control');
+
+                $input.on('focus', function () {
+                    $this.addClass('is-focused');
+                });
+
+                $input.on('keydown', function () {
+                    $this.addClass('is-focused');
+                });
+
+                $input.on('blur', function () {
+                    $this.removeClass('is-focused');
+
+                    if ($input.val().trim().length > 0) {
+                        $this.addClass('is-focused');
+                    }
+                });
+
+                $label.on('click', function () {
+                    $input.focus();
+                });
+
+                if ($input.val().trim().length > 0) {
+                    $this.addClass('is-focused');
+                }
+            });
+
+        });
+    </script>
+
+    
+
+    <!--CORE JAVASCRIPT-->
+    <script src="global/js/core.js"></script>
+    <script src="assets/js/system.js"></script>
+</body>
+</html>
